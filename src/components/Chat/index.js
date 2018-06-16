@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import Message from '../Message';
+import { orderByDate } from '../../Util';
 import './styles.css';
 
 const Chat = ({ transcript }) => {
@@ -26,7 +27,7 @@ const Chat = ({ transcript }) => {
     return null;
   };
 
-  const messages = transcript.map((message, count) => {
+  const messages = orderByDate(transcript, 'date').map((message, count) => {
     const date = moment(message.date);
     return (
       <div key={count} className="chat__message">
