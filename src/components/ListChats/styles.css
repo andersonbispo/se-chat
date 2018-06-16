@@ -22,3 +22,17 @@
   font-size: 18px;
   justify-content: space-between;
 }
+
+.list-chats__search-field {
+  padding: 10px;
+  height: 40px;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  background-color: white;
+}
+
+.list-chats__input {
+  height: 28px;
+  width: 350px;
+}

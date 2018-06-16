@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import './styles.css';
 
-const ListChat = ({ data, currentChat, onChatClick }) => {
+const ListChat = ({ data, currentChat, onChatClick, onSearch }) => {
 
   const formattedDate = timestamp => {
     return new Date(timestamp).toLocaleDateString();
@@ -26,6 +26,13 @@ const ListChat = ({ data, currentChat, onChatClick }) => {
 
   return (
     <div className="list-chats">
+      <div className="list-chats__search-field">
+        <input
+          className="list-chats__input"
+          type="search"
+          placeholder="Search..."
+          onChange={(event) => onSearch(event.target.value)} />
+      </div>
       {chats}
     </div>
   );

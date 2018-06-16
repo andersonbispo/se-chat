@@ -14,9 +14,17 @@ class Main extends Component {
     }
   }
 
-  getOrderedData = (fullData) => {
+  getOrderedData(fullData) {
     const filtered = fullData.filter(record => record.type === 'chat');
     return orderByDate(filtered, 'created_at').reverse();
+  }
+
+  handleSearch(term) {
+    let orderedData = this.getOrderedData(data);
+    if (term !== "") {
+      orderedData = orderedData.filter(chat => chat.requested_by.startsWith(term) || chat.initial_message.indexOf(term) > 0);
+    }
+    this.setState({ orderedData });
   }
 
   handleChatClick(chat) {
@@ -29,7 +37,8 @@ class Main extends Component {
         <ListChats
           data={this.state.orderedData}
           currentChat={this.state.currentChat.id}
-          onChatClick={this.handleChatClick.bind(this)} />
+          onChatClick={this.handleChatClick.bind(this)}
+          onSearch={this.handleSearch.bind(this)} />
         <Chat transcript={this.state.currentChat.transcript} />
       </div>
     );
