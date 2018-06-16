@@ -1,0 +1,39 @@
+.message {
+  display: flex;
+  flex-direction: column;
+}
+
+.left-side {
+  align-items: flex-start;
+}
+
+.right-side {
+  align-items: flex-end;
+}
+
+.message__alias {
+  display: flex;
+  width: 250px;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.right-side .message__alias {
+  flex-direction: row-reverse;
+}
+
+.message__text {
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.triangle-up {
+	width: 0;
+	height: 0;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+  border-bottom: 10px solid #ccc;
+  margin-left: 10px;
+  margin-right: 10px;
+}

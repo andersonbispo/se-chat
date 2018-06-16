@@ -1,0 +1,8 @@
+.chat {
+  margin-left: 450px;
+  padding: 40px 40px 40px 0;
+}
+
+.chat__message {
+  margin-bottom: 30px;
+}
