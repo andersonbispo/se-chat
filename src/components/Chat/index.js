@@ -7,6 +7,8 @@ import './styles.css';
 const Chat = ({ transcript }) => {
 
   let lastDate = null;
+  let lastTime = null;
+  let lastAlias = null
 
   const areDifferentDates = (date1, date2) => {
     const first = date1.startOf('day');
@@ -27,12 +29,31 @@ const Chat = ({ transcript }) => {
     return null;
   };
 
+  const showHeader = (message) => {
+    console.log(lastAlias, message.alias);
+    const time = moment(message.date).format('HH:mm');
+    if (lastAlias === null || lastAlias !== message.alias) {
+      lastAlias = message.alias;
+      if (lastTime === null) {
+        lastTime = time;
+      }
+      return true;
+    }
+    console.log(lastTime, time);
+    if (lastTime === null || lastTime !== time) {
+      lastTime = time;
+      return true;
+    }
+    return false;
+  }
+
   const messages = orderByDate(transcript, 'date').map((message, count) => {
     const date = moment(message.date);
+    console.log(showHeader(message));
     return (
       <div key={count} className="chat__message">
         {getDate(date)}
-        <Message {...message} />
+        <Message {...message} showHeader={showHeader(message)} />
       </div>
     )
   });

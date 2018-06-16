@@ -18,8 +18,12 @@
   margin-bottom: 10px;
 }
 
-.right-side .message__alias {
-  flex-direction: row-reverse;
+.message__header {
+  margin-top: 30px;
+}
+
+.right-side .message__header {
+  direction: rtl;
 }
 
 .message__text {
