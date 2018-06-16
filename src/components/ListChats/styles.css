@@ -1,0 +1,18 @@
+.list-chats {
+  width: 400px;
+  overflow-y: scroll;
+  height: 100%;
+  position: fixed;
+}
+
+.list-chats__chat {
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
+}
+
+.list-chats__title {
+  display: flex;
+  font-size: 18px;
+  justify-content: space-between;
+}
