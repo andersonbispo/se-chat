@@ -30,26 +30,21 @@ const Chat = ({ transcript }) => {
   };
 
   const showHeader = (message) => {
-    console.log(lastAlias, message.alias);
     const time = moment(message.date).format('HH:mm');
+    let isToShow = false;
     if (lastAlias === null || lastAlias !== message.alias) {
       lastAlias = message.alias;
-      if (lastTime === null) {
-        lastTime = time;
-      }
-      return true;
+      isToShow = true;
     }
-    console.log(lastTime, time);
     if (lastTime === null || lastTime !== time) {
       lastTime = time;
-      return true;
+      isToShow = true;
     }
-    return false;
+    return isToShow;
   }
 
   const messages = orderByDate(transcript, 'date').map((message, count) => {
     const date = moment(message.date);
-    console.log(showHeader(message));
     return (
       <div key={count} className="chat__message">
         {getDate(date)}
